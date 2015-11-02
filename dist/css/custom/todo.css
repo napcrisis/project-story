@@ -1,0 +1,164 @@
+.unstyled {
+	list-style-type: none;
+}
+.close{
+	position: absolute;
+	right:0;
+	background: url("../../img/close.png") 20px 20px;
+	background-repeat: no-repeat;
+}
+.close img{
+	width: 40px;
+	padding: 8px;
+	height: 40px;
+}
+.box {
+    border-radius: 15px;
+	position: absolute;
+	border: 1px solid #ece2f0;
+	width:auto;
+	height: auto;
+	padding:20px;
+	background: #fff;
+}
+.container-title{
+	padding: 10px 20px 5px 20px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+.container-content{
+	padding: 10px 20px 20px 20px;
+}
+.container-content .tasklist{
+	
+}
+.container-content .tasklist input{
+	margin-bottom: 4px;
+	border: none;
+	border-color: transparent;
+}
+html, body, #main-container{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.controlsmenu{
+	position: absolute;
+	right:10px;
+	top:10px;
+}
+.aLabel {
+    background-color: white;
+    padding: 0.4em;
+    font: 12px sans-serif;
+    color: #444;
+    z-index: 21;
+    border: 1px dotted gray;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    cursor: pointer;
+}
+.taskcard{
+	margin-top: 5px;
+	position: relative;
+}
+.task_description{
+	max-width: 515px;
+}
+.task_deadline{
+	 float:right; 
+	 color:#7F8C8D;
+	 width: 150px;
+	 margin-right: 5px;
+}
+.task_date_label{
+	 width: auto;
+}
+.save_task{
+	right:10px;
+	bottom:5px;
+	width: 150px;
+	position: absolute;
+}
+.delete_task{
+	text-decoration:underline;
+	left:10px;
+	bottom:5px;
+	position: absolute;
+}
+.system_div{
+	position: relative;
+}
+.space_for_save{
+	margin-bottom: 50px;
+}
+.task_date_person_row{
+	width:100%;
+	float:left;
+	margin-bottom:10px;
+}
+.right_panel{
+  position: absolute;
+  top: 5px;
+  right:29px;
+  width: 540px;
+}
+.taskcard{
+  width: 540px;
+  height: auto;
+  border:1px solid #BDC3C7;
+  padding: 10px;
+  line-height: 1.2;
+}
+.taskcard p{
+  margin-bottom:0;
+}
+.delete_task{
+	cursor: pointer;
+}
+.singleDatePick, .search_date_range_picker{
+	padding-right: 0;
+	color:#7F8C8D;
+}
+.system_text{
+	position:absolute; 
+	bottom:7px; right:30px; 
+	color:#7F8C8D;
+}
+.task_name{
+	width:180px;
+	float:left; 
+	display:inline;
+}
+.task_label{
+	margin-top: 8px;
+	width:auto;
+}
+.greyfont{
+	color:#7F8C8D;
+}
+.checkbox{
+	height:30px;
+	display:inline;
+	float:left;
+	width: 30px;
+}
+.completed{
+	background: #ECF0F1;
+}
+.below_header_container{
+	width: 50%;
+	overflow-y: auto;
+	position: absolute;
+	top: 55px;
+	right: 0px;
+	margin:0;
+	padding:0;
+}
+#main-container{
+	width: 50%;
+	margin:0;
+	padding:0;
+}
