@@ -1,5 +1,9 @@
 $(function(){
 	// on page load
+
+	jsPlumb.ready(function() {
+	    jsPlumb.setContainer("diagramContainer");
+	});
 	$(".search_date_range_picker").daterangepicker({ autoUpdateInput: false, "opens": "left"});
 
 	$(".search_date_range_picker").on('apply.daterangepicker', function(ev, picker) {
