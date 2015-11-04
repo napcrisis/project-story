@@ -1,17 +1,37 @@
-.unstyled {
-	list-style-type: none;
+/* Containers */
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
 }
-.close{
+.below_header_container{
+	width: 100%;
+	overflow-y: auto;
 	position: absolute;
-	right:0;
-	background: url("../../img/close.png") 20px 20px;
-	background-repeat: no-repeat;
+	top: 55px;
+	right: 0px;
+	margin:0;
+	padding:0;
 }
-.close img{
-	width: 40px;
-	padding: 8px;
-	height: 40px;
+#diagramContainer{
+	overflow-y: auto;
+	margin:0;
+	padding:0;
+	position: relative;
 }
+.right_panel{
+  position: absolute;
+  top: 5px;
+  right:29px;
+  width: 540px;
+}
+.taskcard_holder{
+	position: relative;
+}
+
+
+/* diagram related */
 .box {
     border-radius: 15px;
 	position: absolute;
@@ -20,34 +40,6 @@
 	height: auto;
 	padding:20px;
 	background: #fff;
-}
-.container-title{
-	padding: 10px 20px 5px 20px;
-	margin-bottom: 5px;
-	width: 100%;
-}
-.container-content{
-	padding: 10px 20px 20px 20px;
-}
-.container-content .tasklist{
-	
-}
-.container-content .tasklist input{
-	margin-bottom: 4px;
-	border: none;
-	border-color: transparent;
-}
-html, body, #main-container{
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
-}
-
-.controlsmenu{
-	position: absolute;
-	right:10px;
-	top:10px;
 }
 .aLabel {
     background-color: white;
@@ -60,6 +52,9 @@ html, body, #main-container{
     filter: alpha(opacity=80);
     cursor: pointer;
 }
+
+
+/* tasks related */
 .taskcard{
 	margin-top: 5px;
 	position: relative;
@@ -98,12 +93,6 @@ html, body, #main-container{
 	width:100%;
 	float:left;
 	margin-bottom:10px;
-}
-.right_panel{
-  position: absolute;
-  top: 5px;
-  right:29px;
-  width: 540px;
 }
 .taskcard{
   width: 540px;
@@ -148,17 +137,15 @@ html, body, #main-container{
 .completed{
 	background: #ECF0F1;
 }
-.below_header_container{
-	width: 50%;
-	overflow-y: auto;
+#reset{
 	position: absolute;
-	top: 55px;
-	right: 0px;
-	margin:0;
-	padding:0;
+	left: 10px;
+	bottom:10px;
+	width: 80px;
+	display: none;
+	cursor: pointer;
+	z-index: 100000;
 }
-#main-container{
-	width: 50%;
-	margin:0;
-	padding:0;
+.selected{
+	background:#ECF0F1;
 }

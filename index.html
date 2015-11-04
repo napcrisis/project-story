@@ -3,29 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>ProjectStory</title>
-
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- http://designmodo.github.io/Flat-UI/ -->
+    <!-- http://designmodo.github.io/Flat-UI/docs/components.html#fui-tagsinput -->
 
     <!-- Loading Bootstrap -->
     <link href="dist/css/vendor/bootstrap.min.css" rel="stylesheet">
 
     <!-- Loading Flat UI -->
     <link href="dist/css/flat-ui.css" rel="stylesheet">
-    <link href="dist/css/demo.css" rel="stylesheet">
-    <link href="dist/css/custom/todo.css" rel="stylesheet">
     <link href="img/favicon.ico" rel="shortcut icon">
 
+    <!-- Loading dropdown date css -->
     <link href="dist/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Loading my own css -->
     <link href="dist/css/custom/todo.css" rel="stylesheet">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="dist/js/vendor/html5shiv.js"></script>
-      <script src="dist/js/vendor/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
-    <!-- http://designmodo.github.io/Flat-UI/ -->
-    <!-- http://designmodo.github.io/Flat-UI/docs/components.html#fui-tagsinput -->
     <nav class="navbar" role="navigation"  style="background:#ECF0F1; height:55px; margin:0;">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
@@ -70,6 +66,7 @@
     </nav><!-- /navbar -->
 
     <div class="below_header_container">
+      <button class="btn btn-block btn-lg btn-warning" id="reset">reset</button>
       <div id="diagramContainer">
         
       </div>
@@ -99,8 +96,8 @@
       <textarea class="form-control task_description" name="task_description" placeholder="description" ></textarea>
       <div class="system_div space_for_save">
         <small class="system_text">Systems affected (comma delimited)</small>
-        <div class="tagsinput-primary" style="margin:10px 0 0 0;">
-            <input name="systems_affected" class="tagsinput" value="" />
+        <div class="tagsinput-primary" style="margin:10px 0 0 0;position: relative;">
+            <input name="systems_affected" class="tagsinput tagsinput-typeahead" value="" />
         </div>
       </div>
       <small class="delete_task">Remove</small>
@@ -120,20 +117,27 @@
       <small style="line-height:1.1;" class="task_description"></small>
       <div class="system_div">
         <small class="system_text">Systems affected</small>
-        <div class="tagsinput-primary" style="margin:10px 0 0 0;">
-            <input name="systems_affected" class="systems_affected" />
+        <div class="tagsinput-primary" style="margin:10px 0 0 0;position: relative;">
+            <input name="systems_affected" class="tagsinput tagsinput-typeahead" />
         </div>
       </div>
     </div>
-    
+
+    <div class="box hidden greyfont" id="box_template">System Name</div>
+
 
     <!-- Script import -->
     <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/hashtable.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/jsPlumb-1.7.10.js"></script>
+    
     <script src="js/custom/todo_jquery.js"></script>
-    <script src="dist/js/flat-ui.min.js"></script>
+    <script src="js/bloodhound.min.js"></script>
+    <script src="js/typeahead.jquery.min.js"></script>
 
+    <script src="dist/js/flat-ui.min.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
     <!-- Local storage -->
     <script src="js/json2.js"></script>
     <script src="js/storage.js"></script>
@@ -142,5 +146,11 @@
      
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="js/daterangepicker.js"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="dist/js/vendor/html5shiv.js"></script>
+      <script src="dist/js/vendor/respond.min.js"></script>
+    <![endif]-->
   </body>
 </html>
