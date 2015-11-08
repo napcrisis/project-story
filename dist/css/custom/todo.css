@@ -25,6 +25,7 @@ html, body{
   top: 5px;
   right:29px;
   width: 540px;
+  margin-bottom: 300px;
 }
 .taskcard_holder{
 	position: relative;
@@ -141,11 +142,61 @@ html, body{
 	position: absolute;
 	left: 10px;
 	bottom:10px;
-	width: 80px;
+	max-width: 500px;
+	width: auto;
 	display: none;
 	cursor: pointer;
 	z-index: 100000;
 }
 .selected{
 	background:#ECF0F1;
+}
+
+.completed_task{
+	height: 25px;
+}
+.projectname{
+	color: #95A5A6;
+	font-size: 10pt;
+	float:left;
+}
+
+.option{
+	float:right;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.title-field{
+	width:95%; 
+	height:35px;
+}
+.expand{
+	position: absolute;
+	right: 12px;
+	top: 15px;
+}
+.changed_files{
+	margin-bottom: 0;
+}
+.changed_files tr td {
+	font-size: 10pt;
+}
+#magical_image_box{
+	position: absolute;
+	top:0;
+	display: none;
+	z-index: 9999999999;
+	border: 2px solid #bdc3c7;
+	border-radius: 6px;
+}
+#close{
+	position: absolute;
+	z-index: 99999999999;
+	width: 100px;
+}
+.diagramtitle{
+	position: absolute;
+	display: none;
+	top:10px;
+	left: 20px;
 }

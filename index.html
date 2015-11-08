@@ -37,13 +37,11 @@
             <a href="#" id="selected_project" class="dropdown-toggle" data-toggle="dropdown" style="padding: 5px 15px;">All Systems <b class="caret"></b></a>
             <span class="dropdown-arrow"></span>
               <ul class="dropdown-menu">
-                <li><a>Scope to projects</a></li>
-                <li class="divider"></li>
                 <li><a href="#" class="update_project">All Systems</a></li>
-                <li><a href="#" class="update_project">Daily Pricing Story</a></li>
-                <li><a href="#" class="update_project">Android Free Support</a></li>
+                <li><a href="#" class="update_project">Android Scheduling Interface</a></li>
                 <li><a href="#" class="update_project">Analytics Jenkins</a></li>
-                <li><a href="#" class="update_project">iOS Free Support</a></li>
+                <li><a href="#" class="update_project">Backend Support</a></li>
+                <li><a href="#" class="update_project">Web Links User Experience</a></li>
               </ul>
             </li>
           </ul>
@@ -67,6 +65,7 @@
 
     <div class="below_header_container">
       <button class="btn btn-block btn-lg btn-warning" id="reset">reset</button>
+      <div class="diagramtitle"><p>Systems Architecture</p></div>
       <div id="diagramContainer">
         
       </div>
@@ -75,7 +74,9 @@
         <button class="form-control greyfont" id="add_new_task">New Task ...</button>
         <div class="taskcard_holder"></div> <!-- new task -->
         <div class="taskcard_holder"></div> <!-- existing task -->
-      </div>  
+      </div> 
+      <img id="magical_image_box"/>
+      <a href="#" class="btn btn-block btn-lg btn-danger" id="close">Close</a>
     </div>
     
     <!-- hidden dump -->
@@ -89,7 +90,7 @@
         </div>
         <input class="form-control task_name" name="task_name" placeholder="Task name"/>
         <div style="float:left; display:inline; margin: 5px 0 0 10px;">
-          <img src="img/profilepic.jpg" width="30px"/>
+          <img src="img/profilepic.png" width="30px"/>
           <small style="color:#7F8C8D;" class="task_assigned">Alex</small>
         </div>
       </div>
@@ -105,12 +106,12 @@
     </div>
 
     <div class="taskcard hidden" id="task_template">
-      <div style="width:100%;float:left;">
+      <div class="title-field">
         <small class="task_deadline task_date_label">By 12 Aug 15</small>
         <input type="checkbox" class="form-control checkbox">
         <strong class="task_name task_label"></strong>
         <div style="float:left; display:inline; margin-left:20px;">
-          <img src="img/profilepic.jpg" width="30px"/>
+          <img src="img/profilepic.png" width="30px"/>
           <small style="color:#7F8C8D;" class="task_assigned">Alex</small>
         </div>
       </div>
@@ -121,11 +122,15 @@
             <input name="systems_affected" class="tagsinput tagsinput-typeahead" />
         </div>
       </div>
+      <div class="completed_task">
+        <small class="projectname">Default</small>
+        <small class="option hidden">show changed files</small>
+      </div>
+      <table class="table table-hover changed_files">
+      </table>
+      <span class="expand fui-triangle-down-small"></span>
     </div>
-
     <div class="box hidden greyfont" id="box_template">System Name</div>
-
-
     <!-- Script import -->
     <script src="js/jquery-2.1.4.js"></script>
     <script src="js/hashtable.js"></script>
@@ -146,6 +151,7 @@
      
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
