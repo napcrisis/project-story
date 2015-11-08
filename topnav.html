@@ -1,0 +1,174 @@
+<!doctype html>
+<html ng-app="todoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>ProjectStory</title>
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- http://designmodo.github.io/Flat-UI/ -->
+    <!-- http://designmodo.github.io/Flat-UI/docs/components.html#fui-tagsinput -->
+
+    <!-- Loading Bootstrap -->
+    <link href="dist/css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="dist/css/flat-ui.css" rel="stylesheet">
+    <link href="img/favicon.ico" rel="shortcut icon">
+
+    <!-- Loading dropdown date css -->
+    <link href="dist/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Loading my own css -->
+    <link href="dist/css/custom/todo.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar" role="navigation"  style="background:#ECF0F1; height:55px; margin:0;">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href="#">Project Story</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        <form class="navbar-form navbar-right" action="#" role="search">
+        <input type="hidden" name="project" value="All Systems"/>
+        <ul class="nav navbar-nav navbar-left">
+          <li class="dropdown">
+            <a href="#" id="selected_project" class="dropdown-toggle" data-toggle="dropdown" style="padding: 5px 15px;">All Systems <b class="caret"></b></a>
+            <span class="dropdown-arrow"></span>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="update_project">All Systems</a></li>
+                <li><a href="#" class="update_project">Android Scheduling Interface</a></li>
+                <li><a href="#" class="update_project">Analytics Jenkins</a></li>
+                <li><a href="#" class="update_project">Backend Support</a></li>
+                <li><a href="#" class="update_project">Web Links User Experience</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="form-group">
+            <div class="input-group" style="width:300px;">
+              <input class="form-control" id="navbarInput-01" type="search" placeholder="Search for filenames or keywords">
+              <span class="input-group-btn">
+                <button type="submit" class="btn"><span class="fui-search"></span></button>
+              </span>
+            </div>
+            <div class="input-group" style="width:240px;">
+              <input type="text" value="" placeholder="Start - End Date" class="form-control search_date_range_picker" />
+              <span class="input-group-btn" id="datepickhack">
+                <button type="submit" class="btn"><span class="fui-calendar"></span></button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </nav><!-- /navbar -->
+
+    <div class="below_header_container">
+      <button class="btn btn-block btn-lg btn-warning" id="reset">reset</button>
+      <div class="diagramtitle"><p>Systems Architecture</p></div>
+      <div id="diagramContainer">
+        
+      </div>
+
+      <div class="right_panel">
+        <button class="form-control greyfont" id="add_new_task">New Task ...</button>
+        <div class="taskcard_holder"></div> <!-- new task -->
+      </div> 
+      <img id="magical_image_box"/>
+      <img id="magical_slow_performance" src="img/cpu.png" width="400px" />
+      <img id="magical_normal_performance" src="img/normal.png" width="400px"/>
+      <a href="#" class="btn btn-block btn-lg btn-danger" id="close">Close</a>
+    </div>
+    
+    <!-- hidden dump -->
+    <div class="taskcard hidden" id="create_task">
+      <div class="task_date_person_row">
+        <div class="task_deadline input-group">
+          <input type="text" name="due_date" placeholder="Due Date" class="form-control singleDatePick" />
+          <span class="input-group-btn clickdatehack">
+            <button class="btn"><span class="fui-calendar"></span></button>
+          </span>
+        </div>
+        <input class="form-control task_name" name="task_name" placeholder="Task name"/>
+        <div style="float:left; display:inline; margin: 5px 0 0 10px;">
+          <img src="img/profilepic.png" width="30px"/>
+          <small style="color:#7F8C8D;" class="task_assigned">Alex</small>
+        </div>
+      </div>
+      <textarea class="form-control task_description" name="task_description" placeholder="description" ></textarea>
+      <div class="system_div space_for_save">
+        <small class="system_text">Systems affected (comma delimited)</small>
+        <div class="tagsinput-primary" style="margin:10px 0 0 0;position: relative;">
+            <input name="systems_affected" class="tagsinput tagsinput-typeahead" value="" />
+        </div>
+      </div>
+      <small class="delete_task">Remove</small>
+      <button class="btn btn-block btn-lg btn-inverse save_task">Save</button>
+    </div>
+
+    <div class="taskcard hidden" id="task_template">
+      <div class="title-field">
+        <small class="task_deadline task_date_label">By 12 Aug 15</small>
+        <input type="checkbox" class="form-control checkbox">
+        <strong class="task_name task_label"></strong>
+        <div style="float:left; display:inline; margin-left:20px;">
+          <img src="img/profilepic.png" width="30px"/>
+          <small style="color:#7F8C8D;" class="task_assigned">Alex</small>
+        </div>
+      </div>
+      <small style="line-height:1.1;" class="task_description"></small>
+      <div class="system_div">
+        <small class="system_text">Systems affected</small>
+        <div class="tagsinput-primary" style="margin:10px 0 0 0;position: relative;">
+            <input name="systems_affected" class="tagsinput tagsinput-typeahead" />
+        </div>
+      </div>
+      <div class="completed_task">
+        <small class="projectname">Default</small>
+        <small class="option hidden">show changed files</small>
+      </div>
+      <table class="table table-hover changed_files">
+      </table>
+      <span class="expand fui-triangle-down-small"></span>
+    </div>
+    <div class="box hidden greyfont" id="box_template">
+        <div class="casing">
+          <div class="systemname">System Name</div>
+          <div class="row smallerfont">
+          <div class="col-md-6"><span style="display:inline;">11</span> <img src="img/bug.png" width="15px" style="display:inline;"></div>
+          <div class="col-md-6">20 <span class="fui-github"></span></div>
+          <center><div class="row slowPerformance hidden btn btn-small btn-danger" style="margin-top:10px;">Slow! <span class="fui-image"></span></div></center>
+          <center><div class="row normalPerformance hidden btn btn-small btn-info" style="margin-top:10px;">Normal <span class="fui-image"></span></div></center>
+        </div>
+      </div>
+    </div>
+    <!-- Script import -->
+    <script src="js/data.js"></script>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/hashtable.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jsPlumb-1.7.10.js"></script>
+    
+    <script src="js/custom/todo_jquery.js"></script>
+    <script src="js/bloodhound.min.js"></script>
+    <script src="js/typeahead.jquery.min.js"></script>
+
+    <script src="dist/js/flat-ui.min.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <!-- Local storage -->
+    <script src="js/json2.js"></script>
+    <script src="js/storage.js"></script>
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="js/moment.min.js"></script>
+     
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="dist/js/vendor/html5shiv.js"></script>
+      <script src="dist/js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </body>
+</html>

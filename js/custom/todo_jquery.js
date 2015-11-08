@@ -8,7 +8,6 @@ $(function(){
 		temp.find(".tagsinput").val(task_obj.systems_affected);
 		temp.attr("data-id",task_obj.id);
 		temp.addClass("task_"+task_obj.id);
-		temp.appendTo($(".taskcard_holder").last());
 		task_obj.div = temp;
 		temp.find(".tagsinput").first().tagsinput();
 
@@ -20,6 +19,7 @@ $(function(){
 
       	// setup task
 		if(task_obj.completed){
+			temp.appendTo($(".taskcard_holder").last());
 			temp.find(".checkbox").first().prop('checked', true);
 			temp.addClass("completed");
 			temp.find(".tagsinput").first().attr("disabled","disabled");
@@ -27,6 +27,7 @@ $(function(){
 			collapse(temp,1);
 			insertFilesEditted(temp, task_obj);
 		} else {
+			temp.prependTo($(".taskcard_holder").last());
 			collapse(temp,2);
 		}
 
@@ -255,8 +256,30 @@ $(function(){
 
 	function drawContainers(system){
 		var box = $("#box_template").clone().removeClass("hidden").attr("id",system.space_removed_id);
-		box.text(system.name).css({left:system.x, top:system.y});
+		box.find(".systemname").first().text(system.name);
+		box.css({left:system.x, top:system.y});
 		box.appendTo($("#diagramContainer"));
+		switch(system.name){
+			case "MySQL Database":
+				box.find(".slowPerformance").removeClass("hidden");
+			break;
+			case "Backend API":
+				box.find(".normalPerformance").removeClass("hidden");
+			break;
+		}
+		$(".slowPerformance").hover(function(){ // hover in
+			var img_box = $("#magical_slow_performance").show();
+			img_box.css({left:"100px", top:"290px"});
+		},function(){
+			$("#magical_slow_performance").hide();
+		});
+
+		$(".normalPerformance").hover(function(){
+			var img_box = $("#magical_normal_performance").show();
+			img_box.css({left:"170px", top:"40px"});
+		},function(){
+			$("#magical_normal_performance").hide();
+		});
 		return box;
 	}
 	function getSpacedRemovedID(name){
@@ -282,7 +305,7 @@ $(function(){
 		var website = new Object;
 		website.name = "Website";
 		website.space_removed_id = getSpacedRemovedID(website.name);
-		website.x = 300;
+		website.x = 350;
 		website.y = 50;
 		systems.put(website.name, website);
 		systems_names_allowed.push({word:website.name});
@@ -290,8 +313,8 @@ $(function(){
 		var database = new Object;
 		database.name = "MySQL Database";
 		database.space_removed_id = getSpacedRemovedID(database.name);
-		database.x = 261;
-		database.y = 450;
+		database.x = 200;
+		database.y = 500;
 		systems.put(database.name, database);
 		systems_names_allowed.push({word:database.name});
 
@@ -299,7 +322,7 @@ $(function(){
 		jenkins.name = "Jenkins";
 		jenkins.space_removed_id = getSpacedRemovedID(jenkins.name);
 		jenkins.x = 500;
-		jenkins.y = 450;
+		jenkins.y = 480;
 		systems.put(jenkins.name, jenkins);
 		systems_names_allowed.push({word:jenkins.name});
 
@@ -521,11 +544,19 @@ $(function(){
 	// });
 	// systemsAffected_possibilites.initialize();
 
+	/** RONALD LOOK HERE */
 	// retrieve stuff from storage if any
-	if($.jStorage.get(storage_keyword)){
-	    // if not - load the data from the server
+	console.log(data);
+
+	// comment when you finish loading the stuff onto the website
+	if($.jStorage.get(storage_keyword)){ 
 	    tasks = $.jStorage.get(storage_keyword);
 	}
+	// console.log(JSON.stringify(tasks)); // use this copy current content and put into js/data.js
+	// tasks = JSON.parse(data); // uncomment after loading data.js
+
+	// deleteAllTasks(); // helps you to remove all task from the local browser, uncomment and refresh the page
+	/** END OF RONALD LOOK HERE */
 	if($.jStorage.get(storage_counter)){
 		counter = $.jStorage.get(storage_counter);
 	}
@@ -535,8 +566,6 @@ $(function(){
 
 	// console.log(tasks);
 	/* delete storage / DEBUG */
-	// console.log(tasks);
-	// deleteAllTasks();
 	
 	// Project Change
 	$("#add_new_task").hide();
@@ -546,6 +575,10 @@ $(function(){
 	$(".update_project").click(function(){
 		$("input[name='project']").val($(this).text());
 		$("#selected_project").html($(this).text() + '<b class="caret"></b>');
+		$(".update_project").each(function(){
+			$(this).parent().removeClass("selected");
+		});
+		$(this).parent().addClass("selected");
 		if($(this).text()=="All Systems"){
 			$("#add_new_task").hide();
 		} else {

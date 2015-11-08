@@ -21,11 +21,13 @@ html, body{
 	position: relative;
 }
 .right_panel{
+	height: 100%;	
+	border-left: 1px solid #ECF0F1;
+	padding-left: 5px;
   position: absolute;
   top: 5px;
   right:29px;
   width: 540px;
-  margin-bottom: 300px;
 }
 .taskcard_holder{
 	position: relative;
@@ -37,10 +39,13 @@ html, body{
     border-radius: 15px;
 	position: absolute;
 	border: 1px solid #ece2f0;
-	width:auto;
+	width:180px;
 	height: auto;
-	padding:20px;
+	padding:15px;
 	background: #fff;
+}
+.box .smallerfont{
+	font-size: 10pt;
 }
 .aLabel {
     background-color: white;
@@ -53,7 +58,10 @@ html, body{
     filter: alpha(opacity=80);
     cursor: pointer;
 }
-
+/*
+.casing{
+	pad
+}*/
 
 /* tasks related */
 .taskcard{
@@ -181,9 +189,8 @@ html, body{
 .changed_files tr td {
 	font-size: 10pt;
 }
-#magical_image_box{
+#magical_image_box, #magical_slow_performance,#magical_normal_performance{
 	position: absolute;
-	top:0;
 	display: none;
 	z-index: 9999999999;
 	border: 2px solid #bdc3c7;
@@ -193,10 +200,32 @@ html, body{
 	position: absolute;
 	z-index: 99999999999;
 	width: 100px;
+	display: none;
 }
 .diagramtitle{
 	position: absolute;
 	display: none;
 	top:10px;
 	left: 20px;
+}
+
+.full{
+	display: block;
+	float: left;
+	width: 249px;
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid #BDC3C7;
+	padding: 0;
+}
+.full li{
+	list-style-type: none;
+	width: 100%;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-left: 5px;
+	border-bottom: 1px solid #BDC3C7;
+}
+.noborder{
+	border-bottom:	none;
 }
