@@ -43,15 +43,15 @@
         </form>
         <ul class="full">
           <input type="hidden" name="project" value="All Systems"/>
-          <li><a href="#" class="update_project">All Systems</a></li>
-          <li><a href="#" class="update_project">Android Scheduling Interface</a></li>
-          <li><a href="#" class="update_project">Analytics Jenkins</a></li>
-          <li><a href="#" class="update_project">Backend Support</a></li>
-          <li><a href="#" class="update_project">Web Links User Experience</a></li>
+          <li class="selected update_project" data="All Systems"><a href="#">All Systems</a></li>
+          <li class="update_project"data="Android Scheduling Interface"><a href="#">Android Scheduling Interface</a></li>
+          <li class="update_project" data="Analytics Jenkins"><a href="#">Analytics Jenkins</a></li>
+          <li class="update_project" data="Backend Support"><a href="#">Backend Support</a></li>
+          <li class="update_project" data="Web Links User Experience"><a href="#">Web Links User Experience</a></li>
         </ul>
       </div>
       <div class="below_header_container" style="top:0; width:87%; left:13%;">
-        <button class="btn btn-block btn-lg btn-warning" id="reset">reset</button>
+        <button class="btn btn-block btn-lg btn-warning" id="reset" style="left:80px;">reset</button>
         <div class="diagramtitle"><p>Systems Architecture</p></div>
         <div id="diagramContainer"></div>
         <div class="right_panel">

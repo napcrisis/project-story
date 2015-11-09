@@ -88,7 +88,7 @@ $(function(){
 				var img_box = $("#magical_image_box").show();
 				var top = fileholder.parent().position().top;
 				var widest_image = $(".right_panel").first().position().left;
-				var right = $("body").first().width()-widest_image;
+				var right = $("body").first().width()-widest_image-$(".below_header_container").position().left;
 				img_box.css({right:right+10+"px", width:widest_image-30+"px", top:top+15+"px"});
 				img_box.attr("src",$(this).attr("data-img"));
 				var close_box = $("#close").show();
@@ -573,20 +573,19 @@ $(function(){
 		filter();
 	});
 	$(".update_project").click(function(){
-		$("input[name='project']").val($(this).text());
-		$("#selected_project").html($(this).text() + '<b class="caret"></b>');
+		$("input[name='project']").val($(this).attr("data"));
+		$("#selected_project").html($(this).attr("data") + '<b class="caret"></b>');
 		$(".update_project").each(function(){
-			$(this).parent().removeClass("selected");
+			$(this).removeClass("selected");
 		});
-		$(this).parent().addClass("selected");
-		if($(this).text()=="All Systems"){
+		$(this).addClass("selected");
+		if($(this).attr("data")=="All Systems"){
 			$("#add_new_task").hide();
 		} else {
 			$("#add_new_task").show();
 		}
 		filter();
 	});
-
 	$("#reset").click(function(){
 		resetDiagramFilter();
 		$(this).hide();
