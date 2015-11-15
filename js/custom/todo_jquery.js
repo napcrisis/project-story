@@ -33,6 +33,7 @@ $(function(){
 
 		// trigger off modal 
 		temp.find(".checkbox").change(function(){
+			// alert("intentionally disabled");
 			var parent = $(this).parent().parent();
 			if($(this).is(':checked')){ 
 				parent.addClass("completed");
@@ -269,14 +270,14 @@ $(function(){
 		}
 		$(".slowPerformance").hover(function(){ // hover in
 			var img_box = $("#magical_slow_performance").show();
-			img_box.css({left:"100px", top:"290px"});
+			img_box.css({left:"10px", top:"180px"});
 		},function(){
 			$("#magical_slow_performance").hide();
 		});
 
 		$(".normalPerformance").hover(function(){
 			var img_box = $("#magical_normal_performance").show();
-			img_box.css({left:"170px", top:"40px"});
+			img_box.css({left:"470px", top:"150px"});
 		},function(){
 			$("#magical_normal_performance").hide();
 		});
@@ -431,7 +432,11 @@ $(function(){
 		for(var i in display_tasks){
 			if(!display_tasks[i].completed){
 				continue;
-			}			
+			}	
+			var size = display_tasks[i].systems_affected.split(",");
+			if(size.length!=2){
+				continue;
+			}
 			if(links_count.containsKey(display_tasks[i].systems_affected)){
 				links_count.put(display_tasks[i].systems_affected,links_count.get(display_tasks[i].systems_affected)+1);
 				if(max <links_count.get(display_tasks[i].systems_affected)){
@@ -443,6 +448,9 @@ $(function(){
 		}
 		links_count.each(function(key, value){
 			var width = maxWidthOfLine * (value/max);
+
+			console.log(key);
+			console.log(connector_link.get(key));
 			instance.connect({
 				uuids: connector_link.get(key),
 				detachable:false,
@@ -546,15 +554,16 @@ $(function(){
 
 	/** RONALD LOOK HERE */
 	// retrieve stuff from storage if any
-	console.log(data);
+	// console.log(data);
 
 	// comment when you finish loading the stuff onto the website
-	if($.jStorage.get(storage_keyword)){ 
-	    tasks = $.jStorage.get(storage_keyword);
-	}
+	// if($.jStorage.get(storage_keyword)){ 
+	//     tasks = $.jStorage.get(storage_keyword);
+	// }
+	
+	tasks = JSON.parse(data); // uncomment after loading data.js
+	// tasks.reverse();
 	// console.log(JSON.stringify(tasks)); // use this copy current content and put into js/data.js
-	// tasks = JSON.parse(data); // uncomment after loading data.js
-
 	// deleteAllTasks(); // helps you to remove all task from the local browser, uncomment and refresh the page
 	/** END OF RONALD LOOK HERE */
 	if($.jStorage.get(storage_counter)){
